@@ -28,7 +28,7 @@ const ShowCapturedMap = () => {
       if (localStorage.token) {
         axios.defaults.headers.common['x-auth-token'] = localStorage.token;
       }
-      const response = await axios.get(`http://localhost:5555/api/maps/${mapId}`);
+      const response = await axios.get(process.env.REACT_APP_BACKEND_DOMAIN + '/api/maps/' + mapId);
       const mapData = response.data;
       setCapturedImage(`data:image/png;base64,${mapData.image}`);
       setRegion(mapData.region);

@@ -40,7 +40,7 @@ const CaptureMap = () => {
       if (localStorage.token) {
         axios.defaults.headers.common['x-auth-token'] = localStorage.token;
       }
-      await axios.post('http://localhost:5555/api/map/capture', formData, {
+      await axios.post(process.env.REACT_APP_BACKEND_DOMAIN + '/api/map/capture', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

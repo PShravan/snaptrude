@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
-      const res = await axios.get('http://localhost:5555/api/auth');
+      const res = await axios.get(process.env.REACT_APP_BACKEND_DOMAIN + '/api/auth');
       dispatch({ type: 'USER_LOADED', payload: res.data });
     } catch (err) {
       dispatch({ type: 'AUTH_ERROR' });
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (formData) => {
     try {
-      const res = await axios.post('http://localhost:5555/api/auth/register', formData);
+      const res = await axios.post(process.env.REACT_APP_BACKEND_DOMAIN+ '/api/auth/register', formData);
       dispatch({
         type: 'REGISTER_SUCCESS',
         payload: res.data,
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (formData) => {
     try {
-      const res = await axios.post('http://localhost:5555/api/auth/login', formData);
+      const res = await axios.post(process.env.REACT_APP_BACKEND_DOMAIN + '/api/auth/login', formData);
       dispatch({
         type: 'LOGIN_SUCCESS',
         payload: res.data,

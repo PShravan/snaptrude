@@ -10,12 +10,14 @@ const Home = () => {
   const [savedMaps, setSavedMaps] = useState([]);
   const [selectedMap, setSelectedMap] = useState(null);
 
+  console.log(process.env.REACT_APP_BACKEND_DOMAIN)
+
   const fetchSavedMaps = async () => {
     try {
       if (localStorage.token) {
         axios.defaults.headers.common['x-auth-token'] = localStorage.token;
       }
-      const response = await axios.get('http://localhost:5555/api/maps');
+      const response = await axios.get(process.env.REACT_APP_BACKEND_DOMAIN + '/api/maps');
       setSavedMaps(response.data);
     } catch (error) {
       message.error('Failed to retrieve saved maps');
