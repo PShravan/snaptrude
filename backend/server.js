@@ -7,10 +7,6 @@ import {fileURLToPath} from 'url';
 import connectDB from "./config/db.js";
 import mapRoutes from "./routes/mapRoutes.js";
 import auth from "./routes/auth.js";
-// const mapRoutes = require("./routes/mapRoutes");
-
-
-const PORT = process.env.PORT || 5555;
 
 dotenv.config();
 connectDB();
@@ -18,17 +14,10 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-// Middleware for handling CORS POLICY
-// Option 1: Allow All Origins with Default of cors(*)
-app.use(cors());
-// Option 2: Allow Custom Origins
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
+// Adjust CORS as needed for production
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || '*'
+}));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,4 +26,5 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api", mapRoutes);
 app.use('/api/auth', auth);
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+// For Vercel, export the Express app
+export default app;
