@@ -6,6 +6,7 @@ import {fileURLToPath} from 'url';
 
 import connectDB from "./config/db.js";
 import mapRoutes from "./routes/mapRoutes.js";
+import auth from "./routes/auth.js";
 // const mapRoutes = require("./routes/mapRoutes");
 
 
@@ -34,5 +35,6 @@ const __dirname = path.dirname(__filename);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api", mapRoutes);
+app.use('/api/auth', auth);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

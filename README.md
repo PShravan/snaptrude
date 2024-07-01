@@ -6,8 +6,8 @@ This project sets up a Node.js server using Express.js to manage map data and im
 
 - `POST /api/map/capture`: Save captured image and map data.
 - `GET /api/maps`: Retrieve and display saved map data.
+- `GET /api/maps/:id`: Retrieve and display specific map capture.
 - `GET /api/maps/top`: Get top three most frequently captured regions.
-- `GET /api/maps/cached`: Get cached map data for improved performance.
 
 ## Setup
 

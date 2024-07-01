@@ -3,6 +3,7 @@
 
 import express from "express";
 import multer from "multer";
+import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -11,16 +12,14 @@ import {
   getMapsData,
   getMapData,
   getTopMaps,
-  getCachedMapData,
 } from "../controllers/mapController.js";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-router.post("/map/capture", upload.single("image"), saveMapData);
-router.get("/maps", getMapsData);
-router.get("/maps/:id", getMapData);
-router.get("/maps/top", getTopMaps);
-router.get("/maps/cached", getCachedMapData);
+router.post("/map/capture", auth, upload.single("image"), saveMapData);
+router.get("/maps", auth, getMapsData);
+router.get("/maps/:id", auth, getMapData);
+router.get("/maps/top", auth, getTopMaps);
 
 export default router;

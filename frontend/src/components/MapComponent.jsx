@@ -1,4 +1,3 @@
-// import dotenv from "dotenv";
 import React, { useCallback, useRef, useState } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { Button } from 'antd';
@@ -38,20 +37,22 @@ const MapComponent = ({ onCapture }) => {
   };
 
   return isLoaded ? (
-    <div>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        {/* Child components, such as markers, info windows, etc. */}
-      </GoogleMap>
+    <>
+      <div id="google-map">
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={10}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+        >
+          {/* Child components, such as markers, info windows, etc. */}
+        </GoogleMap>
+      </div>
       <Button type="primary" onClick={handleCapture} style={{ marginTop: '10px' }}>
         Capture Region
       </Button>
-    </div>
+    </>
   ) : <></>;
 };
 
