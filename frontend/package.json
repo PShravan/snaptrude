@@ -13,6 +13,7 @@
     "@babylonjs/core": "^7.13.1",
     "@react-google-maps/api": "^2.19.3",
     "antd": "^5.18.3",
+    "axios": "^1.7.2",
     "babylonjs": "^7.13.1",
     "dotenv": "^16.4.5",
     "moment": "^2.30.1",
