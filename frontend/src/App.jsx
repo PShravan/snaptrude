@@ -61,6 +61,28 @@ const MenuItems = () => {
     );
   };
 
+const AppRoutes = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+
+  if (!isAuthenticated) {
+    return <Routes>
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Login />} />
+    </Routes>
+  }
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/capture" element={<CaptureMap />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/maps/:mapId" element={<ShowCapturedMap />} />
+      <Route path="/show-captured" element={<ShowCapturedMap />} />
+    </Routes>
+  );
+};
+
 const App = () => {
   return (
     <AuthProvider>
@@ -74,11 +96,11 @@ const App = () => {
             display: 'flex',
             alignItems: 'center',
             wordSpacing: '10px',
-            backgroundColor: '#001529', // Ant Design default dark header color
-            padding: '0 24px', // Add padding to the header
+            backgroundColor: '#001529',
+            padding: '0 24px',
           }}
         >
-          <Title level={3} style={{ color: 'white', margin: 0, lineHeight: '64px' }}>
+          <Title level={3} style={{ color: 'white', margin: 0, lineHeight: '64px', marginRight: "20px" }}>
             GeoSnapCap
           </Title>
           <MenuItems />
@@ -86,21 +108,13 @@ const App = () => {
         <Content style={{ padding: '0 48px', backgroundColor: '#fff' }}>
           <div
             style={{
-              backgroundColor: '#fff', // Set the background color of the content area
+              backgroundColor: '#fff',
               minHeight: 280,
               padding: 24,
-              borderRadius: '8px', // Add border-radius if needed
+              borderRadius: '8px',
             }}
           >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/capture" element={<CaptureMap />} />
-              <Route path="/maps/:mapId" element={<ShowCapturedMap />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-            </Routes>
+            <AppRoutes />
           </div>
         </Content>
       </Layout>

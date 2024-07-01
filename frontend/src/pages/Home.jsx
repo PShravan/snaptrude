@@ -34,9 +34,9 @@ const Home = () => {
 
   return (
     <>
-      <Button type="primary" onClick={fetchSavedMaps} style={{ marginTop: '10px' }}>
+      {/* <Button type="primary" onClick={fetchSavedMaps} style={{ marginTop: '10px' }}>
         Refresh Saved Maps
-      </Button>
+      </Button> */}
       <List
         style={{ marginTop: '20px' }}
         header={<div>Saved Maps</div>}
