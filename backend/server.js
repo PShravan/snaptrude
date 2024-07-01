@@ -8,9 +8,9 @@ import connectDB from "./config/db.js";
 import mapRoutes from "./routes/mapRoutes.js";
 import auth from "./routes/auth.js";
 
-const PORT = process.env.PORT || 5555;
+// const PORT = process.env.PORT || 5555;
 
-console.log("PORt is: ", PORT, process.env.PORT);
+// console.log("PORt is: ", PORT, process.env.PORT);
 
 dotenv.config();
 connectDB();
@@ -31,6 +31,6 @@ app.use("/api", mapRoutes);
 app.use('/api/auth', auth);
 
 // // For Vercel, export the Express app
-// export default app;
+export default app;
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
