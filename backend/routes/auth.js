@@ -2,8 +2,8 @@ import express from "express";
 import { check, validationResult } from 'express-validator';
 
 import { register, login, logout } from '../controllers/auth.js';
-import { User } from '../models/User.js';
 import { auth } from "../middleware/auth.js";
+import { User } from '../models/User.js';
 
 const router = express.Router();
 
